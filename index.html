@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiv Book Publications - Handwriting Project</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Project Title */
+        .project-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .project-title h2 {
+            color: #1e3c72;
+            font-size: 2rem;
+            border-bottom: 3px solid #e67e22;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        /* Alert Box for Compulsory Fee */
+        .alert-box {
+            background-color: #ffebee;
+            border-left: 6px solid #d32f2f;
+            color: #c62828;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .alert-box strong {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        /* Plans Grid */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* Plan Card */
+        .plan-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .plan-card h3 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .plan-card .pages {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e67e22;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .plan-details {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            text-align: left;
+        }
+
+        .plan-details li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .plan-details li span:first-child {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .plan-details li span:last-child {
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+
+        /* Refund Policy Note */
+        .refund-note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+            font-weight: bold;
+        }
+
+        /* About Us Section */
+        .about-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+
+        .about-section h3 {
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            text-align: center;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+
+        .testimonials-section h3 {
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #e67e22;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card strong {
+            color: #1e3c72;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+
+        .contact-section h3 {
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        .contact-info strong {
+            color: #e67e22;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            .plan-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">📚 Shiv Book Publications</div>
+        <p>English Handwriting Work Opportunity | Since 2024</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="project-title">
+            <h2>Project Plans</h2>
+            <p>Choose Your Plan & Start Earning</p>
+        </div>
+
+        <!-- Highlighted Alert Box -->
+        <div class="alert-box">
+            ⚠️ IMPORTANT: <strong>Registration Fees is Prepaid and Compulsory</strong> to activate your account.
+        </div>
+
+        <div class="plans-grid">
+            
+            <!-- Project 1 -->
+            <div class="plan-card">
+                <h3>Project 1</h3>
+                <span class="pages">50 Pages (One Sided)</span>
+                <ul class="plan-details">
+                    <li><span>Duration:</span> <span>7 Days</span></li>
+                    <li><span>Payment:</span> <span>₹20,000</span></li>
+                    <li><span>Reg. Fees:</span> <span>₹499</span></li>
+                </ul>
+                <a href="https://wa.me/919887626529?text=I%20want%20to%20apply%20for%20Project%201%20(50%20Pages)" target="_blank" class="whatsapp-btn">
+                    Apply Now on WhatsApp
+                </a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="plan-card">
+                <h3>Project 2</h3>
+                <span class="pages">70 Pages (One Sided)</span>
+                <ul class="plan-details">
+                    <li><span>Duration:</span> <span>10 Days</span></li>
+                    <li><span>Payment:</span> <span>₹25,000</span></li>
+                    <li><span>Reg. Fees:</span> <span>₹850</span></li>
+                </ul>
+                <a href="https://wa.me/919887626529?text=I%20want%20to%20apply%20for%20Project%202%20(70%20Pages)" target="_blank" class="whatsapp-btn">
+                    Apply Now on WhatsApp
+                </a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="plan-card">
+                <h3>Project 3</h3>
+                <span class="pages">105 Pages (One Sided)</span>
+                <ul class="plan-details">
+                    <li><span>Duration:</span> <span>15 Days</span></li>
+                    <li><span>Payment:</span> <span>₹30,000</span></li>
+                    <li><span>Reg. Fees:</span> <span>₹999</span></li>
+                </ul>
+                <a href="https://wa.me/919887626529?text=I%20want%20to%20apply%20for%20Project%203%20(105%20Pages)" target="_blank" class="whatsapp-btn">
+                    Apply Now on WhatsApp
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Refund Policy Note -->
+        <div class="refund-note">
+            📢 <strong>Refund Policy:</strong><br>
+            Book Registration Fees Refunded With Your Half Salary!
+        </div>
+
+        <!-- About Us Section -->
+        <div class="about-section">
+            <h3>🏢 About Shiv Book Publications</h3>
+            <p>
+                Shiv Book Publications is a leading book publishing company established in 2024. 
+                We specialize in providing handwritten notes, study materials, and educational content 
+                for students across India. Our mission is to help students achieve academic excellence 
+                through quality handwritten materials.
+            </p>
+            <p style="margin-top: 20px;">
+                <strong>Our Services:</strong> Handwritten Notes, Book Rewriting, Study Materials, 
+                Educational Content Creation, and More.
+            </p>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials-section">
+            <h3>⭐ What Our Clients Say</h3>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Great opportunity for students to earn while studying. The process is smooth and payment is timely."</p>
+                    <strong>- Rahul S., Student</strong>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Professional team and good work environment. I completed my project within the given time."</p>
+                    <strong>- Priya M., Freelancer</strong>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Excellent platform for handwritten work. The refund policy is very transparent."</p>
+                    <strong>- Amit K., Writer</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h3>📞 Contact Us</h3>
+            <div class="contact-info">
+                <p><strong>📍 Address:</strong><br>
+                Office No. 1, Suman Tower, Plot No. 18,<br>
+                Opposite Domino's Pizza, Sector-11,<br>
+                Gandhi Nagar, Gujarat</p>
+                
+                <p><strong>📱 Phone:</strong><br>
+                <a href="tel:9887626529" style="color: #1e3c72; text-decoration: none; font-weight: bold;">9887626529</a></p>
+                
+                <p><strong>💬 WhatsApp:</strong><br>
+                <a href="https://wa.me/919887626529" target="_blank" class="whatsapp-btn">
+                    Chat on WhatsApp
+                </a></p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Shiv Book Publications. All Rights Reserved.</p>
+        <p>Contact Us: 9887626529 | support@shivbookpublications.com</p>
+    </footer>
+
+</body>
+</html>
